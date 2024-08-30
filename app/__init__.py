@@ -15,6 +15,3 @@ app.register_blueprint(main_bp, url_prefix='/')
 
 with app.app_context():
     db.create_all()
-
-
-

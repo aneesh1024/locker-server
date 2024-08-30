@@ -27,7 +27,7 @@ def require_password(f):
 
 @main_bp.route('/')
 def index():
-    return{"msg": "Hello, API"}, 400
+    return{"msg": "Hello, API"}, 200
 
 @main_bp.route('/add', methods=['POST'])
 @require_password
@@ -37,6 +37,8 @@ def add_content():
     if 'note' not in note:
         return jsonify({"message":"Note not added"}),500
     print(note['note'])
+    if len(note['note']) > 500:
+        return jsonify({"error":"Note is too long"}), 500
     new_note = Note(content=note['note'])
     db.session.add(new_note)
     db.session.commit()
