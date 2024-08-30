@@ -3,4 +3,4 @@ instance/
 __pycache__/
 venv
 .vercel
-*/__pycache__
+app/__pycache__
